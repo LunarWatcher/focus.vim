@@ -12,11 +12,11 @@ function M.split_resizer(width, height) --> Only resize normal buffers, set qf t
         return 
     end
     if ft == 'qf' then
-        eval("set winwidth=10")
+        cmd("set winwidth=10")
     else
-        eval("set winwidth=" .. width) --> lua print(vim.o.winwidth)
+        cmd("set winwidth=" .. width) --> lua print(vim.o.winwidth)
     end
-    if height ~= 0 then eval("set winheight=" .. height) --> Opt in to set height value, otherwise auto-size it
+    if height ~= 0 then cmd("set winheight=" .. height) --> Opt in to set height value, otherwise auto-size it
     else cmd('wincmd=') end --> Auto-Maximize windows horizontally when in focus by DEFAULT
 
 
