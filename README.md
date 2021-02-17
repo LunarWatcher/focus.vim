@@ -1,4 +1,4 @@
-# Auto-Focussing Splits/Windows for Neovim
+# Auto-Focussing Splits/Windows for Vim and Neovim
 
 🔋 Batteries Included. No configuration neccessary
 
@@ -23,12 +23,20 @@ use 'beauwilliams/focus.nvim'
 ```
 
 # Configuration
+
 **Disable Focus**
+
+Neovim:
 ```lua
 -- place me somewhere in your init.lua
 local focus = require('focus')
 focus.enable = false
 ```
+Vim:
+```vim
+lua require("focus").enable = false
+```
+
 **Disable Focus (Per Session)**
 
 NOTE: issue command before making some splits
@@ -37,18 +45,36 @@ NOTE: issue command before making some splits
 ```
 
 **Set Focus Width**
+
+Neovim:
 ```lua
 -- place me somewhere in your init.lua
 local focus = require('focus')
 focus.width = 120
 ```
 
+Vim:
+```vim
+lua require('focus').width = 120
+```
+
+
 **Set Focus Height**
+
+Neovim:
 ```lua
 -- place me somewhere in your init.lua
 local focus = require('focus')
 focus.height = 40
 ```
+
+Vim:
+
+```vim
+lua require('focus').height = 40
+```
+
+**Note:** from testing in Vim, not setting the height may result in some weirdness when the buffers are resized -- notably that the buffers "flash". This doesn't happen when the height is set, and is probably a consequence of `wincmd`. If you experience issues, I recommend explicitly setting the height.
 
 ## Planned Improvements 😼
 
