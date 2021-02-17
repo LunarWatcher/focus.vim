@@ -27,7 +27,8 @@ endfunction
 
 "Init focus, set autocmds and start the resizer
 
-if has("nvim")
+" https://old.reddit.com/r/neovim/comments/j8jaoo/i_want_to_check_if_i_have_nvim_05_or_not/
+if has("nvim") && has("nvim-0.0.5") 
     call v:lua.require('focus').focus_init()
 else
     call luaeval("require ('focus').focus_init()")
