@@ -23,7 +23,9 @@ local function polyfill_flatten(array)
 end
 
 local function nvim_create_augroups(definitions)
+  cmd("echoerr 'here'")
   for group_name, definition in pairs(definitions) do
+    cmd("echoerr 'enter first loop'")
     cmd('augroup '..group_name)
     cmd('autocmd!')
     for _, def in ipairs(definition) do
