@@ -3,7 +3,7 @@
 -- until cmd is invoked, so this should be fine
 local cmd = vim.cmd
 if (cmd == nil) then
-  local cmd = vim.command  
+  cmd = vim.command  
 end
 local autocmd = {}
 
