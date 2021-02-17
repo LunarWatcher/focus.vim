@@ -8,8 +8,8 @@ local autocmd = {}
 local function polyfill_flatten(array)
   local result = {}
 
-  for i = 1, #arr do
-    local v = arr[i]
+  for i = 1, #array do
+    local v = array[i]
     if type(v) == "table" then
       polyfill_flatten(v)
     elseif v then
