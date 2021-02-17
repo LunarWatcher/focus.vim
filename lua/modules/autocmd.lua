@@ -11,7 +11,7 @@ local function polyfill_flatten(array)
   for i = 1, #array do
     local v = array[i]
     if type(v) == "table" then
-      polyfill_flatten(v)
+      table.insert(result, polyfill_flatten(v))
     elseif v then
       table.insert(result, v)
     end
