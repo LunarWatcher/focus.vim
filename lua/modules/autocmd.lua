@@ -1,5 +1,10 @@
--- vim.cmd is an alias for vim.api.nvim_command (if using nvim), and it's compatible with Vim
+-- vim.cmd is an alias for vim.api.nvim_command (if using nvim)
+-- Not entirely sure how to do this aside a fallback. There's no NPE
+-- until cmd is invoked, so this should be fine
 local cmd = vim.cmd
+if (cmd == nil) then
+  local cmd = vim.command  
+end
 local autocmd = {}
 
 local function nvim_create_augroups(definitions)
