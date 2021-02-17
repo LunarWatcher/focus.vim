@@ -1,5 +1,7 @@
 local vim = vim --> Use locals
-local eval = vim.api.nvim_eval or vim.eval
+-- Necessary to prevent nil indexing
+local api = vim.api or vim
+local eval = api.nvim_eval or vim.eval
 local cmd = vim.cmd or vim.command
 
 local M = {}
