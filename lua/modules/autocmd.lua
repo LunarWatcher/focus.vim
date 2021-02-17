@@ -1,5 +1,5 @@
-local api = vim.api
-local cmd = api.nvim_command
+-- vim.cmd is an alias for vim.api.nvim_command (if using nvim), and it's compatible with Vim
+local cmd = vim.cmd
 local autocmd = {}
 
 local function nvim_create_augroups(definitions)
