@@ -1,18 +1,30 @@
 -- vim.cmd is an alias for vim.api.nvim_command (if using nvim)
 -- Not entirely sure how to do this aside a fallback. There's no NPE
 -- until cmd is invoked, so this should be fine
-local cmd = vim.cmd
-if (cmd == nil) then
-  cmd = vim.command  
-end
+local cmd = vim.cmd or vim.command  
+
 local autocmd = {}
+
+local function polyfill_flatten(array)
+  local result = {}
+
+  for i = 1, #arr do
+    local v = arr[i]
+    if type(v) == "table" then
+      polyfill_flatten(v)
+    elseif v then
+      table.insert(result, v)
+    end
+  end
+  return result
+end
 
 local function nvim_create_augroups(definitions)
   for group_name, definition in pairs(definitions) do
     cmd('augroup '..group_name)
     cmd('autocmd!')
     for _, def in ipairs(definition) do
-      local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+      local command = table.concat(polyfill_flatten{'autocmd', def}, ' ')
       cmd(command)
     end
     cmd('augroup END')
