@@ -19,23 +19,21 @@ local function polyfill_flatten(array)
       end
     end
   end
+  inner_flatten(array)
   return result
 end
 
 local function nvim_create_augroups(definitions)
-  cmd("echoerr 'here'")
   for group_name, definition in pairs(definitions) do
-    cmd("echoerr 'enter first loop'")
-    -- cmd('augroup '..group_name)
-    -- cmd('autocmd!')
-    cmd("echoerr '" .. (#definition) .. "'");
-    for _, def in ipairs(definition) do
+    cmd('augroup '..group_name)
+    cmd('autocmd!')
 
+    for _, def in ipairs(definition) do
+      
       local command = table.concat(polyfill_flatten{'autocmd', def}, ' ')
-      cmd("echoerr " .. command)
       cmd(command)
     end
-    -- cmd('augroup END')
+    cmd('augroup END')
   end
 end
 
