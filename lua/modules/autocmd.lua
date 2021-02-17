@@ -24,6 +24,7 @@ local function nvim_create_augroups(definitions)
     cmd('augroup '..group_name)
     cmd('autocmd!')
     for _, def in ipairs(definition) do
+      cmd("echoerr '" + def + "'")
       local command = table.concat(polyfill_flatten{'autocmd', def}, ' ')
       cmd(command)
     end
