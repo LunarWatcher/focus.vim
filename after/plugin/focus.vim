@@ -26,13 +26,14 @@ endfunction
 
 
 "Init focus, set autocmds and start the resizer
-" if g:focus_enabled == 1
-call v:lua.require('focus').focus_init()
-" endif
+
+if has("nvim")
+    call v:lua.require('focus').focus_init()
+else
+    call luaeval("require ('focus').focus_init()")
+endif
 
 
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
-
-
