@@ -37,7 +37,7 @@ end
 
 function autocmd.setup(width,height)
   local definitions = {
-    autocmds = {
+    FocusAUGroup = {
       { 'BufEnter', '*', 'lua require \'modules.resizer\'.split_resizer('..width..','..height..')'},
       { 'BufEnter', '*', 'setlocal cursorline'},
       { 'BufEnter', '*', 'setlocal signcolumn=no'},
