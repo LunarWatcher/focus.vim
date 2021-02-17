@@ -7,8 +7,8 @@ local cmd = vim.cmd or vim.command
 local M = {}
 function M.split_resizer(width, height) --> Only resize normal buffers, set qf to 10 always
     if eval('g:focus_enabled') == 0 then return end
-    local ft = eval("&ft") -- Drop meta accessors. Loses some variable modification, but it's fine.
-    if ft == 'NvimTree' or ft == 'NerdTree'  or ft == 'CHADTree' then 
+    local ft = eval("&ft"):lower() -- Drop meta accessors. Loses some variable modification, but it's fine.
+    if ft == 'nvimtree' or ft == 'nerdtree'  or ft == 'chadtree' then 
         return 
     end
     if ft == 'qf' then
